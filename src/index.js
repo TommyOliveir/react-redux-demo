@@ -5,14 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { configureStore } from "@reduxjs/toolkit";
 import { Provider } from "react-redux";
+import userReducer from './features/user'
+import themeReducer from './features/theme'
 
+//create store
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    user: userReducer,
+    theme: themeReducer,
+  },
 });
 
 ReactDOM.render(
-  <React.StrictMode store={store}>
-    <Provider>
+  <React.StrictMode >
+    {/* wrap provider to access store globally */}
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,
